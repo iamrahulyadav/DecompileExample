@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@id/appBarRoomDetail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@id/collapsingRoomDetail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                app:contentScrim="@color/white"
+                app:layout_scrollFlags="exitUntilCollapsed|scroll">
+
+                <include
+                    android:id="@id/photoLayout"
+                    layout="@layout/detail_photo_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_collapseMode="parallax"
+                    app:layout_collapseParallaxMultiplier="0.7" />
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@id/toolbar"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50.0dip"
+                    app:contentInsetLeft="0.0dip"
+                    app:contentInsetStart="0.0dip"
+                    app:layout_collapseMode="pin">
+
+                    <include
+                        android:id="@id/detail_toolbar"
+                        layout="@layout/detail_toolbar" />
+
+                </android.support.v7.widget.Toolbar>
+            </android.support.design.widget.CollapsingToolbarLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <FrameLayout
+            android:id="@id/fl_container"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingBottom="50.0dip"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <RelativeLayout
+        android:id="@id/rlQuestion"
+        android:layout_width="100.0dip"
+        android:layout_height="50.0dip"
+        android:layout_above="@id/layoutSendMessage"
+        android:background="@color/red"
+        android:visibility="gone" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@id/layoutSendMessage"
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/line"
+        android:background="#ff4383ff"
+        app:layout_constraintRight_toLeftOf="@id/line">
+
+        <TextView
+            android:id="@id/tvSendMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_sms"
+            android:drawablePadding="8.0dip"
+            android:gravity="center"
+            android:text="@string/agent_message"
+            android:textColor="#ffffffff"
+            android:textSize="16.0sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <View
+        android:id="@id/colorLine"
+        android:layout_width="1.0dip"
+        android:layout_height="50.0dip"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#ff4383ff" />
+
+    <View
+        android:id="@id/line"
+        android:layout_width="1.0dip"
+        android:layout_height="50.0dip"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#40ffffff" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@id/layoutAgentCall"
+        android:layout_width="fill_parent" android:layout_height="50.0dip"
+        android:layout_alignParentBottom="true" android:layout_toRightOf="@id/line"
+        android:background="#ff4383ff" app:layout_constraintLeft_toRightOf="@id/line">
+
+        <TextView
+            android:id="@id/tvAgentCall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_call"
+            android:drawablePadding="8.0dip"
+            android:gravity="center"
+            android:text="@string/agent_call"
+            android:textColor="#ffffffff"
+            android:textSize="16.0sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@id/llMoveTop"
+        android:layout_width="35.0dip"
+        android:layout_height="35.0dip"
+        android:layout_above="@id/layoutAgentCall"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="13.0dip"
+        android:layout_marginEnd="15.0dip"
+        android:layout_marginRight="15.0dip"
+        android:background="@drawable/price_history_floating_background"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:src="@drawable/dropdown_close">
+
+        <ImageView
+            android:layout_width="15.0dip"
+            android:layout_height="15.0dip"
+            android:src="@drawable/dropdown_close" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@id/ivCallBubble"
+        android:layout_width="105.0dip"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/layoutAgentCall"
+        android:layout_alignLeft="@id/layoutAgentCall"
+        android:minHeight="47.0dip"
+        android:scaleType="centerCrop" />
+
+    <RelativeLayout
+        android:id="@id/rlStampLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="50.0dip"
+        android:background="#99000000"
+        android:clickable="true"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@id/stampIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <include
+        android:id="@id/loading_indicator"
+        layout="@layout/common_loading"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="kr.co.station3.dabang">
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <permission
+        android:name="kr.co.station3.dabang.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="kr.co.station3.dabang.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+    <permission
+        android:name="kr.co.station3.dabang.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="kr.co.station3.dabang.permission.C2D_MESSAGE" />
+    <application
+        android:name="kr.co.station3.dabang.DabangApplication"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="@string/kakao_app_key" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="6f85b3d5e40ea5f14f8ab31bd3ce5e9c5b4fb95a" />
+        <meta-data
+            android:name="igaworks_app_key"
+            android:value="744679332" />
+        <meta-data
+            android:name="igaworks_hash_key"
+            android:value="fb69bb83bd204aa7" />
+        <meta-data
+            android:name="igaworks_market_info"
+            android:value="google" />
+        <meta-data
+            android:name="MTRACKER_SDK_KEY"
+            android:value="6b1e1bec-c603-11e4-9102-e41f13ed7e3a" />
+        <meta-data
+            android:name="MTRACKER_SESSION_TIME"
+            android:value="1800" />
+        <meta-data
+            android:name="MTRACKER_CHERRY_PICKER_TIME"
+            android:value="5" />
+        <receiver
+            android:name="com.google.android.gms.analytics.AnalyticsReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH" />
+            </intent-filter>
+        </receiver>
+        <service
+            android:name="com.google.android.gms.analytics.AnalyticsService"
+            android:enabled="true"
+            android:exported="false" />
+        <receiver
+            android:name="com.appsflyer.MultipleInstallBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+            <meta-data
+                android:name="forward1"
+                android:value="com.igaworks.IgawReceiver" />
+            <meta-data
+                android:name="forward2"
+                android:value="com.google.android.gms.analytics.CampaignTrackingReceiver" />
+        </receiver>
+        <service
+            android:name="com.google.android.gms.analytics.CampaignTrackingService"
+            android:enabled="true"
+            android:exported="false" />
+        <activity
+            android:name="kr.co.station3.dabang.ActLauncher"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="detail"
+                    android:scheme="dabang" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="@string/kakaolink_host"
+                    android:scheme="@string/kakao_scheme" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity>
+        <activity android:name="kr.co.station3.dabang.view.intro.ActIntro" />
+        <activity android:name="kr.co.station3.dabang.view.login.activity.ActLogin" />
+        <activity android:name="kr.co.station3.dabang.view.login.activity.ActLoginWrapper" />
+        <activity android:name="kr.co.station3.dabang.view.login.activity.ActFindPassword" />
+        <activity android:name="kr.co.station3.dabang.view.room.activity.ActRoomList" />
+        <activity
+            android:name="kr.co.station3.dabang.view.search.activity.ActSearch"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name="kr.co.station3.dabang.view.search.activity.ActQuickSearch" />
+        <activity android:name="kr.co.station3.dabang.view.agent.activity.ActAgent" />
+        <activity android:name="kr.co.station3.dabang.view.myreview.activity.ActMyReview" />
+        <activity android:name="kr.co.station3.dabang.view.review.activity.ActReviewDetail" />
+        <activity android:name="kr.co.station3.dabang.view.notice.activity.ActNotice" />
+        <activity
+            android:name="kr.co.station3.dabang.view.customercenter.activity.ActCustomerCenter"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity android:name="kr.co.station3.dabang.view.event.activity.ActEvent" />
+        <activity android:name="kr.co.station3.dabang.view.user.activity.ActUnRegistration" />
+        <activity android:name="kr.co.station3.dabang.webview.ActWebView" />
+        <activity android:name="kr.co.station3.dabang.webview.base.ActBaseWebView" />
+        <activity
+            android:name="kr.co.station3.dabang.view.main.activity.ActMain"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity android:name="kr.co.station3.dabang.view.upload.activity.ActRoomUploadStart" />
+        <activity android:name="kr.co.station3.dabang.view.upload.activity.ActRoomType" />
+        <activity android:name="kr.co.station3.dabang.view.upload.activity.ActPreview" />
+        <activity android:name="kr.co.station3.dabang.view.upload.activity.ActRoomUploadPhoto" />
+        <activity android:name="kr.co.station3.dabang.view.upload.activity.ActRoomInputInfor" />
+        <activity android:name="kr.co.station3.dabang.view.upload.activity.detail.ActMaintenance" />
+        <activity android:name="kr.co.station3.dabang.view.upload.activity.detail.ActOptions" />
+        <activity
+            android:name="kr.co.station3.dabang.view.upload.activity.detail.ActParking"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name="kr.co.station3.dabang.view.upload.activity.detail.ActRoomFloor" />
+        <activity
+            android:name="kr.co.station3.dabang.view.upload.activity.detail.ActRoomPrice"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name="kr.co.station3.dabang.view.upload.activity.detail.ActRoomSize" />
+        <activity android:name="kr.co.station3.dabang.view.upload.activity.detail.ActHeatingType" />
+        <activity android:name="kr.co.station3.dabang.view.upload.activity.manage.ActRoomModify" />
+        <activity android:name="kr.co.station3.dabang.view.upload.activity.manage.ActRoomInspect" />
+        <activity android:name="kr.co.station3.dabang.view.preview.activity.ActComplexPreview" />
+        <activity android:name="kr.co.station3.dabang.webview.ActLocationAroundWebView" />
+        <activity android:name="kr.co.station3.dabang.view.push.activity.ActSettingPush" />
+        <activity android:name="kr.co.station3.dabang.view.upload.activity.ActPostCode" />
+        <activity android:name="kr.co.station3.dabang.view.upload.activity.ActComplexPostCode" />
+        <activity
+            android:name="kr.co.station3.dabang.view.detail.activity.ActPhotoViewer"
+            android:configChanges="orientation|screenSize" />
+        <activity android:name="kr.co.station3.dabang.view.login.activity.ActFacebookRegist" />
+        <activity android:name="kr.co.station3.dabang.view.photomap.activity.ActPhotoMap" />
+        <activity android:name="kr.co.station3.dabang.view.photoViewer.activity.ActPhotoViewerList" />
+        <activity
+            android:name="org.openpanodroid.PanoViewerActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.ALTERNATIVE" />
+                <data
+                    android:mimeType="image/*"
+                    android:scheme="*" />
+            </intent-filter>
+        </activity>
+        <activity android:name="kr.co.station3.dabang.view.spaceinfo.activity.ActSpaceInfo" />
+        <activity android:name="kr.co.station3.dabang.view.spaceinfo.activity.ActPriceHistory" />
+        <activity android:name="kr.co.station3.dabang.view.lotting.detail.activity.ActLottingDetail" />
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/com_facebook_activity_theme" />
+        <activity android:name="kr.co.station3.dabang.view.user.activity.ActUserInfoModify" />
+        <activity
+            android:name="kr.co.station3.dabang.view.numsearch.activity.ActNumSearch"
+            android:windowSoftInputMode="stateVisible" />
+        <activity android:name="kr.co.station3.dabang.view.login.activity.ActKakaoRegist" />
+        <activity android:name="kr.co.station3.dabang.view.detail.activity.ActDetail" />
+        <activity android:name="kr.co.station3.dabang.view.filter.ActNFilter" />
+        <activity android:name="kr.co.station3.dabang.view.lotting.list.activity.ActLottingList" />
+        <activity android:name="kr.co.station3.dabang.view.bank.calculate.activity.ActCalculate" />
+        <activity android:name="kr.co.station3.dabang.view.bank.result.ActCalculateResult" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider1401066666810334"
+            android:exported="true" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyA5MjyK-l-Ig5b7WzeKYbitoQAIErT29TE" />
+        <service
+            android:name="kr.co.station3.dabang.firebase.DabangFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="kr.co.station3.dabang.firebase.DabangFirebaseInstanceIDService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/push_noti_andr" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/dabang_blue" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </receiver>
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="kr.co.station3.dabang.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+        <service android:name="com.mNewsK.sdk.cApp.CAppService" />
+        <receiver android:name="com.mNewsK.sdk.receiver.CAppReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <activity
+            android:name="com.darsh.multipleimageselect.activities.AlbumSelectActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/MultipleImageSelectTheme">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.darsh.multipleimageselect.activities.ImageSelectActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/MultipleImageSelectTheme">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <service
+            android:name="com.google.android.gms.analytics.AnalyticsJobService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+            android:exported="true">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <meta-data
+            android:name="android.support.VERSION"
+            android:value="26.0.2" />
+        <activity android:name="com.facebook.CustomTabMainActivity" />
+        <activity android:name="com.facebook.CustomTabActivity" />
+        <activity
+            android:name="com.gun0912.tedpermission.TedPermissionActivity"
+            android:configChanges="fontScale|keyboard|keyboardHidden|layoutDirection|locale|mcc|mnc|orientation|screenLayout|screenSize|uiMode"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent.Permission" />
+        <receiver android:name="com.google.android.gms.cast.framework.media.MediaIntentReceiver" />
+        <service android:name="com.google.android.gms.cast.framework.media.MediaNotificationService" />
+        <service android:name="com.google.android.gms.cast.framework.ReconnectionService" />
+        <provider
+            android:name="com.facebook.marketing.internal.MarketingInitProvider"
+            android:authorities="kr.co.station3.dabang.MarketingInitProvider"
+            android:exported="false" />
+        <provider
+            android:name="com.facebook.internal.FacebookInitProvider"
+            android:authorities="kr.co.station3.dabang.FacebookInitProvider"
+            android:exported="false" />
+        <receiver
+            android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent" />
+        <activity
+            android:name="com.google.android.gms.appinvite.PreviewActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppInvite.Preview">
+            <intent-filter>
+                <action android:name="com.google.android.gms.appinvite.ACTION_PREVIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <service
+            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+            android:exported="true"
+            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
+        <activity
+            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <service
+            android:name="com.google.android.gms.tagmanager.TagManagerService"
+            android:enabled="true"
+            android:exported="false" />
+        <activity
+            android:name="com.google.android.gms.tagmanager.TagManagerPreviewActivity"
+            android:exported="true"
+            android:noHistory="true">
+            <intent-filter>
+                <data android:scheme="tagmanager.c.kr.co.station3.dabang" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+        <receiver
+            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+            android:enabled="true"
+            android:exported="false" />
+        <receiver
+            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.INSTALL_PACKAGES">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementService"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <receiver
+            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="kr.co.station3.dabang" />
+            </intent-filter>
+        </receiver>
+        <service
+            android:name="com.google.firebase.iid.FirebaseInstanceIdService"
+            android:exported="true">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="kr.co.station3.dabang.firebaseinitprovider"
+            android:exported="false"
+            android:initOrder="100" />
+        <activity
+            android:name="com.kakao.auth.authorization.authcode.KakaoWebViewActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/com_kakao_login_button"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

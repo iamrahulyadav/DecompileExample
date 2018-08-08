@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <include
+        android:id="@id/compareContainer"
+        layout="@layout/compare_container"
+        android:layout_width="fill_parent"
+        android:layout_height="40.0dip"
+        android:background="@color/disable_bg"
+        android:visibility="gone" />
+
+    <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
+        android:id="@id/swipyrefreshlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/compareContainer"
+        app:srl_direction="top">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@id/rv_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:fadeScrollbars="true"
+            android:paddingBottom="13.0dip"
+            android:scrollbars="none" />
+
+    </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
+
+    <TextView
+        android:id="@id/btnCompareRoom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/disable_btn"
+        android:gravity="center"
+        android:minHeight="50.0dip"
+        android:text="@string/compare_room"
+        android:textColor="#ffffffff"
+        android:textSize="15.0sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <ProgressBar
+        android:id="@id/load_more_loading"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:indeterminate="true"
+        android:visibility="gone" />
+
+</RelativeLayout>
